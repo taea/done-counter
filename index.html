@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <title>編み物カウンター</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 30px 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #5a67d8;
+            margin-bottom: 30px;
+            font-size: 28px;
+        }
+
+        .counter-section {
+            margin-bottom: 30px;
+        }
+
+        .counter-group {
+            background: #f7fafc;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .counter-label {
+            font-size: 14px;
+            color: #4a5568;
+            margin-bottom: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .counter-display {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        input[type="number"] {
+            width: 100px;
+            padding: 12px;
+            font-size: 24px;
+            text-align: center;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-weight: bold;
+            color: #2d3748;
+            -webkit-appearance: none;
+            -moz-appearance: textfield;
+        }
+
+        input[type="number"]:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        .settings-section {
+            background: #f0f4f8;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+        .settings-title {
+            font-size: 16px;
+            color: #2d3748;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .settings-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .settings-row input[type="number"] {
+            width: 80px;
+            padding: 10px;
+            font-size: 18px;
+        }
+
+        .settings-text {
+            color: #4a5568;
+            font-size: 14px;
+        }
+
+        .done-button {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .done-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        .done-button:active {
+            transform: translateY(0);
+        }
+
+        .reset-button {
+            width: 100%;
+            padding: 12px;
+            background: transparent;
+            color: #a0aec0;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 14px;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: all 0.2s;
+        }
+
+        .reset-button:hover {
+            background: #f7fafc;
+            color: #4a5568;
+        }
+
+        @media (max-width: 380px) {
+            .container {
+                padding: 20px 15px;
+            }
+            
+            h1 {
+                font-size: 24px;
+            }
+            
+            input[type="number"] {
+                width: 80px;
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧶 編み物カウンター</h1>
+        
+        <div class="counter-section">
+            <div class="counter-group">
+                <div class="counter-label">段数 (Row)</div>
+                <div class="counter-display">
+                    <input type="number" id="row_count" value="0" min="0">
+                </div>
+            </div>
+            
+            <div class="counter-group">
+                <div class="counter-label">目数 (Stitch)</div>
+                <div class="counter-display">
+                    <input type="number" id="stitch_count" value="0" min="0">
+                </div>
+            </div>
+        </div>
+        
+        <div class="settings-section">
+            <div class="settings-title">目数設定</div>
+            <div class="settings-row">
+                <input type="number" id="setting_stitch_count" value="0">
+                <span class="settings-text">目 /</span>
+                <input type="number" id="setting_stitch" value="1" min="1">
+                <span class="settings-text">段ごと</span>
+            </div>
+        </div>
+        
+        <button id="done_button" class="done-button">DONE</button>
+        <button id="reset_button" class="reset-button">リセット</button>
+    </div>
+
+    <script>
+        const rowCountInput = document.getElementById('row_count');
+        const stitchCountInput = document.getElementById('stitch_count');
+        const settingStitchCountInput = document.getElementById('setting_stitch_count');
+        const settingStitchInput = document.getElementById('setting_stitch');
+        const doneButton = document.getElementById('done_button');
+        const resetButton = document.getElementById('reset_button');
+
+        const STORAGE_KEY = 'knitting_counter_data';
+
+        function loadData() {
+            const savedData = localStorage.getItem(STORAGE_KEY);
+            if (savedData) {
+                const data = JSON.parse(savedData);
+                rowCountInput.value = data.rowCount || 0;
+                stitchCountInput.value = data.stitchCount || 0;
+                settingStitchCountInput.value = data.settingStitchCount || 0;
+                settingStitchInput.value = data.settingStitch || 1;
+            }
+        }
+
+        function saveData() {
+            const data = {
+                rowCount: parseInt(rowCountInput.value) || 0,
+                stitchCount: parseInt(stitchCountInput.value) || 0,
+                settingStitchCount: parseInt(settingStitchCountInput.value) || 0,
+                settingStitch: parseInt(settingStitchInput.value) || 1
+            };
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+        }
+
+        function handleDone() {
+            const currentRow = parseInt(rowCountInput.value) || 0;
+            const currentStitch = parseInt(stitchCountInput.value) || 0;
+            const stitchChange = parseInt(settingStitchCountInput.value) || 0;
+            const stitchInterval = parseInt(settingStitchInput.value) || 1;
+            
+            const newRow = currentRow + 1;
+            rowCountInput.value = newRow;
+            
+            if (stitchInterval > 0 && newRow % stitchInterval === 0) {
+                const newStitch = Math.max(0, currentStitch + stitchChange);
+                stitchCountInput.value = newStitch;
+            }
+            
+            saveData();
+            
+            doneButton.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                doneButton.style.transform = 'scale(1)';
+            }, 100);
+        }
+
+        function handleReset() {
+            if (confirm('カウンターをリセットしますか？')) {
+                rowCountInput.value = 0;
+                stitchCountInput.value = 0;
+                settingStitchCountInput.value = 0;
+                settingStitchInput.value = 1;
+                saveData();
+            }
+        }
+
+        doneButton.addEventListener('click', handleDone);
+        resetButton.addEventListener('click', handleReset);
+        
+        rowCountInput.addEventListener('input', saveData);
+        stitchCountInput.addEventListener('input', saveData);
+        settingStitchCountInput.addEventListener('input', saveData);
+        settingStitchInput.addEventListener('input', saveData);
+        
+        loadData();
+    </script>
+</body>
+</html>
