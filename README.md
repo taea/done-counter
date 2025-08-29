@@ -16,7 +16,7 @@
 - DBは使わず、必要ならLocal Storage を使用したいです
 - 現在の段の数を表示するrow_countという input[type="number"] があります
 - 現在の網目の数を表示するstitch_count という input[type="number"]フォームがあります
-- 網目は段の数に応じて増減するので、stitch setting で、setting_stitch_count(input[type="number"]) per  setting_stitch(input[type="number"]) といった形で設定できるようにしておきます
+- 網目は段の数に応じて増減するので、stitch setting で、setting_stitch_count(input[type="number"]) per  setting_row_count(input[type="number"]) といった形で設定できるようにしておきます
 - setting_stitch_count は -2 目のように負の値も指定できます
 - DONE という Submit ボタンによって、段 (row_count) が一つ増え、網目も stitch setting の設定に応じて増減をします
 - 各 input 値は手入力でも増減が可能です
