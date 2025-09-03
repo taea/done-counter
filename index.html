@@ -15,7 +15,7 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #8B7355 0%, #D2B48C 100%);
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -24,7 +24,7 @@
         }
 
         .container {
-            background: white;
+            background: #FFF8E7;
             border-radius: 20px;
             padding: 30px 20px;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
@@ -34,7 +34,7 @@
 
         h1 {
             text-align: center;
-            color: #5a67d8;
+            color: #6B4423;
             margin-bottom: 30px;
             font-size: 28px;
         }
@@ -44,10 +44,41 @@
         }
 
         .counter-group {
-            background: #f7fafc;
+            background: #F5E6D3;
             border-radius: 12px;
             padding: 20px;
             margin-bottom: 20px;
+            position: relative;
+            transition: background-color 0.3s ease;
+        }
+
+        .counter-group.increase {
+            background: #E8F5E9;
+        }
+
+        .counter-group.decrease {
+            background: #FFEBEE;
+        }
+
+        .stitch-indicator {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 18px;
+            font-weight: bold;
+            padding: 5px 10px;
+            border-radius: 6px;
+        }
+
+        .stitch-indicator.increase {
+            color: #2E7D32;
+            background: rgba(76, 175, 80, 0.1);
+        }
+
+        .stitch-indicator.decrease {
+            color: #C62828;
+            background: rgba(244, 67, 54, 0.1);
         }
 
         .counter-label {
@@ -81,7 +112,7 @@
 
         input[type="number"]:focus {
             outline: none;
-            border-color: #667eea;
+            border-color: #8B7355;
         }
 
         input[type="number"]::-webkit-inner-spin-button,
@@ -91,7 +122,7 @@
         }
 
         .settings-section {
-            background: #f0f4f8;
+            background: #EDE4D3;
             border-radius: 12px;
             padding: 20px;
             margin-bottom: 30px;
@@ -126,7 +157,7 @@
         .done-button {
             width: 100%;
             padding: 18px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #8B7355 0%, #A0826D 100%);
             color: white;
             border: none;
             border-radius: 12px;
@@ -140,7 +171,7 @@
 
         .done-button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 10px 30px rgba(139, 115, 85, 0.4);
         }
 
         .done-button:active {
@@ -186,11 +217,12 @@
         <h1>🧶 編み物カウンター</h1>
         
         <div class="counter-section">
-            <div class="counter-group">
+            <div class="counter-group" id="row_group">
                 <div class="counter-label">段数 (Row)</div>
                 <div class="counter-display">
                     <input type="number" id="row_count" value="0" min="0">
                 </div>
+                <div id="stitch_change_indicator" class="stitch-indicator" style="display: none;"></div>
             </div>
             
             <div class="counter-group">
@@ -222,8 +254,40 @@
         const settingStitchInput = document.getElementById('setting_stitch');
         const doneButton = document.getElementById('done_button');
         const resetButton = document.getElementById('reset_button');
+        const rowGroup = document.getElementById('row_group');
+        const stitchChangeIndicator = document.getElementById('stitch_change_indicator');
 
         const STORAGE_KEY = 'knitting_counter_data';
+
+        function updateStitchIndicator() {
+            const currentRow = parseInt(rowCountInput.value) || 0;
+            const stitchChange = parseInt(settingStitchCountInput.value) || 0;
+            const stitchInterval = parseInt(settingStitchInput.value) || 1;
+            
+            const nextRow = currentRow + 1;
+            
+            if (stitchInterval > 0 && nextRow % stitchInterval === 0) {
+                if (stitchChange > 0) {
+                    rowGroup.classList.remove('decrease');
+                    rowGroup.classList.add('increase');
+                    stitchChangeIndicator.textContent = `増し目 +${stitchChange}`;
+                    stitchChangeIndicator.className = 'stitch-indicator increase';
+                    stitchChangeIndicator.style.display = 'block';
+                } else if (stitchChange < 0) {
+                    rowGroup.classList.remove('increase');
+                    rowGroup.classList.add('decrease');
+                    stitchChangeIndicator.textContent = `減らし目 ${stitchChange}`;
+                    stitchChangeIndicator.className = 'stitch-indicator decrease';
+                    stitchChangeIndicator.style.display = 'block';
+                } else {
+                    rowGroup.classList.remove('increase', 'decrease');
+                    stitchChangeIndicator.style.display = 'none';
+                }
+            } else {
+                rowGroup.classList.remove('increase', 'decrease');
+                stitchChangeIndicator.style.display = 'none';
+            }
+        }
 
         function loadData() {
             const savedData = localStorage.getItem(STORAGE_KEY);
@@ -234,6 +298,7 @@
                 settingStitchCountInput.value = data.settingStitchCount || 0;
                 settingStitchInput.value = data.settingStitch || 1;
             }
+            updateStitchIndicator();
         }
 
         function saveData() {
@@ -244,6 +309,7 @@
                 settingStitch: parseInt(settingStitchInput.value) || 1
             };
             localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+            updateStitchIndicator();
         }
 
         function handleDone() {
