@@ -15,7 +15,7 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
-            background: linear-gradient(135deg, #8B7355 0%, #D2B48C 100%);
+            background: #FFF8E7;
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -24,10 +24,9 @@
         }
 
         .container {
-            background: #FFF8E7;
+            background: transparent;
             border-radius: 20px;
             padding: 30px 20px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
             width: 100%;
             max-width: 400px;
         }
@@ -53,11 +52,18 @@
         }
 
         .counter-group.increase {
-            background: #E8F5E9;
+            background: #2E7D32;
         }
 
         .counter-group.decrease {
-            background: #FFEBEE;
+            background: #C62828;
+        }
+
+        .counter-group.increase .counter-label,
+        .counter-group.decrease .counter-label,
+        .counter-group.increase input[type="number"],
+        .counter-group.decrease input[type="number"] {
+            color: white;
         }
 
         .stitch-indicator {
@@ -65,20 +71,12 @@
             right: 20px;
             top: 50%;
             transform: translateY(-50%);
-            font-size: 18px;
+            font-size: 20px;
             font-weight: bold;
-            padding: 5px 10px;
-            border-radius: 6px;
-        }
-
-        .stitch-indicator.increase {
-            color: #2E7D32;
-            background: rgba(76, 175, 80, 0.1);
-        }
-
-        .stitch-indicator.decrease {
-            color: #C62828;
-            background: rgba(244, 67, 54, 0.1);
+            color: white;
+            display: flex;
+            align-items: center;
+            height: 48px;
         }
 
         .counter-label {
@@ -270,15 +268,15 @@
                 if (stitchChange > 0) {
                     rowGroup.classList.remove('decrease');
                     rowGroup.classList.add('increase');
-                    stitchChangeIndicator.textContent = `増し目 +${stitchChange}`;
-                    stitchChangeIndicator.className = 'stitch-indicator increase';
-                    stitchChangeIndicator.style.display = 'block';
+                    stitchChangeIndicator.textContent = `+${stitchChange}`;
+                    stitchChangeIndicator.className = 'stitch-indicator';
+                    stitchChangeIndicator.style.display = 'flex';
                 } else if (stitchChange < 0) {
                     rowGroup.classList.remove('increase');
                     rowGroup.classList.add('decrease');
-                    stitchChangeIndicator.textContent = `減らし目 ${stitchChange}`;
-                    stitchChangeIndicator.className = 'stitch-indicator decrease';
-                    stitchChangeIndicator.style.display = 'block';
+                    stitchChangeIndicator.textContent = `${stitchChange}`;
+                    stitchChangeIndicator.className = 'stitch-indicator';
+                    stitchChangeIndicator.style.display = 'flex';
                 } else {
                     rowGroup.classList.remove('increase', 'decrease');
                     stitchChangeIndicator.style.display = 'none';
