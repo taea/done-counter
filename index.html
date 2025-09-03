@@ -65,16 +65,12 @@
         }
 
         .stitch-indicator {
-            position: absolute;
-            right: 20px;
-            top: 50%;
-            transform: translateY(-50%);
             font-size: 20px;
             font-weight: bold;
             color: white;
             display: flex;
             align-items: center;
-            height: 48px;
+            margin-left: 10px;
         }
 
         .counter-label {
@@ -217,8 +213,8 @@
                 <div class="counter-label">段数 (Row)</div>
                 <div class="counter-display">
                     <input type="number" id="row_count" value="0" min="0">
+                    <div id="stitch_change_indicator" class="stitch-indicator" style="display: none;"></div>
                 </div>
-                <div id="stitch_change_indicator" class="stitch-indicator" style="display: none;"></div>
             </div>
             
             <div class="counter-group">
