@@ -2,7 +2,9 @@
 
 - [https://taea.github.io/done-counter/](https://taea.github.io/done-counter/)
 - 現在の段数と目数を記録できて、増し目減らし目を設定できるWebアプリ
-- 1段編み終わったら DONE すると 段が1段増えるよ。目数設定に応じて目数も増減するよ
+- 1段編み終わったら DONE すると 段が1段増えるよ。
+  - （Done で段が1段増える。これはダジャレです）
+- 目数設定に応じて目数も増減するよ
 - 目数設定で増し目、減らし目が設定できるよ
 - <img width="300" src="https://github.com/user-attachments/assets/7a06da6c-e8c1-46ef-a578-43893f206420">
 
