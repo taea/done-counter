@@ -258,19 +258,17 @@
             const stitchChange = parseInt(settingStitchCountInput.value) || 0;
             const stitchInterval = parseInt(settingStitchInput.value) || 1;
             
-            const nextRow = currentRow + 1;
-            
-            if (stitchInterval > 0 && nextRow % stitchInterval === 0) {
+            if (stitchInterval > 0 && currentRow > 0 && currentRow % stitchInterval === 0) {
                 if (stitchChange > 0) {
                     rowGroup.classList.remove('decrease');
                     rowGroup.classList.add('increase');
-                    stitchChangeIndicator.textContent = `+${stitchChange}`;
+                    stitchChangeIndicator.textContent = `+${stitchChange}目`;
                     stitchChangeIndicator.className = 'stitch-indicator';
                     stitchChangeIndicator.style.display = 'flex';
                 } else if (stitchChange < 0) {
                     rowGroup.classList.remove('increase');
                     rowGroup.classList.add('decrease');
-                    stitchChangeIndicator.textContent = `${stitchChange}`;
+                    stitchChangeIndicator.textContent = `${stitchChange}目`;
                     stitchChangeIndicator.className = 'stitch-indicator';
                     stitchChangeIndicator.style.display = 'flex';
                 } else {
