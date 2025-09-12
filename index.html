@@ -190,6 +190,32 @@
             color: #6B4423;
         }
 
+        .memo-section {
+            margin: 15px 0;
+        }
+
+        .memo-textarea {
+            width: 100%;
+            padding: 12px;
+            font-size: 14px;
+            line-height: 1.5;
+            border: 2px solid #D4C4B0;
+            border-radius: 8px;
+            background: white;
+            color: #2d3748;
+            resize: none;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        .memo-textarea:focus {
+            outline: none;
+            border-color: #8B7355;
+        }
+
+        .memo-textarea::placeholder {
+            color: #a0aec0;
+        }
+
         @media (max-width: 380px) {
             .container {
                 padding: 20px 15px;
@@ -238,6 +264,11 @@
         </div>
         
         <button id="done_button" class="done-button">DONE</button>
+        
+        <div class="memo-section">
+            <textarea id="memo_field" class="memo-textarea" rows="3" placeholder="メモ..."></textarea>
+        </div>
+        
         <button id="reset_button" class="reset-button">リセット</button>
     </div>
 
@@ -250,6 +281,7 @@
         const resetButton = document.getElementById('reset_button');
         const rowGroup = document.getElementById('row_group');
         const stitchChangeIndicator = document.getElementById('stitch_change_indicator');
+        const memoField = document.getElementById('memo_field');
 
         const STORAGE_KEY = 'knitting_counter_data';
 
@@ -289,6 +321,7 @@
                 stitchCountInput.value = data.stitchCount || 0;
                 settingStitchCountInput.value = data.settingStitchCount || 0;
                 settingStitchInput.value = data.settingStitch || 1;
+                memoField.value = data.memo || '';
             }
             updateStitchIndicator();
         }
@@ -298,7 +331,8 @@
                 rowCount: parseInt(rowCountInput.value) || 0,
                 stitchCount: parseInt(stitchCountInput.value) || 0,
                 settingStitchCount: parseInt(settingStitchCountInput.value) || 0,
-                settingStitch: parseInt(settingStitchInput.value) || 1
+                settingStitch: parseInt(settingStitchInput.value) || 1,
+                memo: memoField.value
             };
             localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
             updateStitchIndicator();
@@ -332,6 +366,7 @@
                 stitchCountInput.value = 0;
                 settingStitchCountInput.value = 0;
                 settingStitchInput.value = 1;
+                memoField.value = '';
                 saveData();
             }
         }
@@ -343,6 +378,7 @@
         stitchCountInput.addEventListener('input', saveData);
         settingStitchCountInput.addEventListener('input', saveData);
         settingStitchInput.addEventListener('input', saveData);
+        memoField.addEventListener('input', saveData);
         
         loadData();
     </script>
