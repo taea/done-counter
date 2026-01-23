@@ -1,0 +1,342 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', 'メイリオ', Meiryo, 'MS Pゴシック', sans-serif;
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 30px;
+    overflow: hidden;
+}
+
+.background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('images/background.jpg');
+    background-repeat: repeat;
+    background-size: 70.15px 66px;
+    opacity: 0.6;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.container {
+    position: relative;
+    width: 100%;
+    max-width: 430px;
+    z-index: 1;
+}
+
+.title {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 46px;
+    font-weight: 800;
+    text-align: center;
+    color: #6B4423;
+    margin-bottom: 40px;
+    line-height: 1;
+}
+
+.emoji {
+    margin-right: 4px;
+}
+
+.title-knit {
+    font-weight: 800;
+}
+
+.title-counter {
+    font-weight: 300;
+    letter-spacing: -0.92px;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.counter-section {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    padding: 40px 30px;
+    box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    gap: 35px;
+    position: relative;
+}
+
+.counter-label {
+    width: 80px;
+    flex-shrink: 0;
+}
+
+.label-en {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+    color: #6B4423;
+    line-height: 1.2;
+}
+
+.label-ja {
+    font-size: 14px;
+    color: #6B4423;
+    line-height: 1.5;
+    margin-top: 2px;
+}
+
+.counter-value-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.counter-value-container {
+    background: white;
+    border-radius: 10px;
+    width: 100px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.counter-value {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 24px;
+    font-weight: 800;
+    color: #6B4423;
+    text-align: center;
+    border: none;
+    background: transparent;
+    width: 100%;
+    outline: none;
+    -webkit-appearance: none;
+    -moz-appearance: textfield;
+}
+
+.counter-value::-webkit-inner-spin-button,
+.counter-value::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.counter-unit {
+    font-size: 14px;
+    color: #6B4423;
+    text-align: center;
+}
+
+.stitch-indicator {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+    color: #6B4423;
+    position: absolute;
+    right: 30px;
+}
+
+.counter-section.increase {
+    background: rgba(46, 125, 50, 0.8);
+}
+
+.counter-section.decrease {
+    background: rgba(198, 40, 40, 0.8);
+}
+
+.counter-section.increase .label-en,
+.counter-section.increase .label-ja,
+.counter-section.increase .counter-unit,
+.counter-section.increase .stitch-indicator,
+.counter-section.decrease .label-en,
+.counter-section.decrease .label-ja,
+.counter-section.decrease .counter-unit,
+.counter-section.decrease .stitch-indicator {
+    color: white;
+}
+
+.settings-section {
+    background: rgba(107, 68, 35, 0.1);
+    border-radius: 10px;
+    padding: 16px 30px;
+    box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.1);
+}
+
+.settings-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #6B4423;
+    margin-bottom: 10px;
+}
+
+.settings-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.settings-value-container {
+    background: white;
+    border-radius: 10px;
+    width: 80px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.settings-value {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+    color: #6B4423;
+    text-align: center;
+    border: none;
+    background: transparent;
+    width: 100%;
+    outline: none;
+    -webkit-appearance: none;
+    -moz-appearance: textfield;
+}
+
+.settings-value::-webkit-inner-spin-button,
+.settings-value::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.settings-text {
+    font-size: 14px;
+    color: #6B4423;
+}
+
+.done-button {
+    background: rgba(107, 68, 35, 0.4);
+    color: white;
+    border: none;
+    border-radius: 100px;
+    padding: 20px 10px;
+    width: 200px;
+    margin: 0 auto;
+    box-shadow: 6px 6px 10px 0px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.done-button:active {
+    transform: scale(0.95);
+}
+
+.done-button span,
+.done-button {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 24px;
+    font-weight: 800;
+    text-align: center;
+}
+
+.memo-section {
+    background: rgba(107, 68, 35, 0.1);
+    border-radius: 10px;
+    padding: 16px;
+    box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.1);
+}
+
+.memo-container {
+    background: white;
+    border-radius: 8px;
+    padding: 16px;
+    height: 120px;
+}
+
+.memo-textarea {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: transparent;
+    color: #6B4423;
+    font-size: 12px;
+    line-height: 1.5;
+    resize: none;
+    outline: none;
+    font-family: 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', 'メイリオ', Meiryo, 'MS Pゴシック', sans-serif;
+}
+
+.memo-textarea::placeholder {
+    color: #a0aec0;
+}
+
+.reset-button {
+    background: rgba(255, 255, 255, 0.1);
+    color: #6B4423;
+    border: none;
+    border-radius: 100px;
+    padding: 20px 10px;
+    width: 100px;
+    height: 40px;
+    margin: 0 auto;
+    box-shadow: 6px 6px 10px 0px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    transition: transform 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.reset-button:active {
+    transform: scale(0.95);
+}
+
+.reset-button {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 40px 20px;
+    }
+
+    .container {
+        max-width: 100%;
+    }
+
+    .title {
+        font-size: 38px;
+        margin-bottom: 30px;
+    }
+
+    .counter-section {
+        padding: 30px 20px;
+        gap: 20px;
+    }
+
+    .counter-label {
+        width: 70px;
+    }
+
+    .label-en {
+        font-size: 18px;
+    }
+
+    .settings-section {
+        padding: 14px 20px;
+    }
+
+    .settings-row {
+        gap: 8px;
+        flex-wrap: wrap;
+    }
+}
