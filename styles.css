@@ -271,14 +271,25 @@ body {
 }
 
 .done-button {
-    background: rgba(107, 68, 35, 0.4);
+    background: linear-gradient(
+        180deg,
+        rgba(107, 68, 35, 0.5) 0%,
+        rgba(107, 68, 35, 0.35) 100%
+    );
+    backdrop-filter: blur(0.5px);
+    -webkit-backdrop-filter: blur(0.5px);
     color: white;
-    border: none;
+    border: 1px solid rgba(107, 68, 35, 0.3);
     border-radius: 100px;
     padding: 20px 10px;
     width: 200px;
     margin: 0 auto;
-    box-shadow: 6px 6px 10px 0px rgba(0, 0, 0, 0.15);
+    box-shadow:
+        inset 2px 0 0 rgba(255, 255, 255, 0.6),
+        inset 0 2px 0 rgba(255, 255, 255, 0.6),
+        inset -2px 0 0 rgba(255, 255, 255, 0.1),
+        inset 0 -2px 0 rgba(255, 255, 255, 0.1),
+        6px 6px 10px 0px rgba(0, 0, 0, 0.3);
     cursor: pointer;
     transition: transform 0.2s;
 }
