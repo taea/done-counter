@@ -6,46 +6,72 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <title>編み物カウンター</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div class="background"></div>
     <div class="container">
-        <h1>🧶 編み物カウンター</h1>
+        <h1 class="title">
+            <span class="emoji">🧶</span>
+            <span class="title-knit">Knit</span>
+            <span class="title-counter">Counter</span>
+        </h1>
 
-        <div class="counter-section">
-            <div class="counter-group" id="row_group">
-                <div class="counter-label">段数 (Row)</div>
-                <div class="counter-display">
-                    <input type="number" id="row_count" value="0" min="0">
-                    <div id="stitch_change_indicator" class="stitch-indicator" style="display: none;"></div>
+        <div class="wrapper">
+            <div class="counter-section row-section" id="row_group">
+                <div class="counter-label">
+                    <div class="label-en">Row</div>
+                    <div class="label-ja">段数</div>
+                </div>
+                <div class="counter-value-wrapper">
+                    <div class="counter-value-container">
+                        <input type="number" id="row_count" value="1" min="0" class="counter-value">
+                    </div>
+                    <div class="counter-unit">段</div>
+                </div>
+                <div id="stitch_change_indicator" class="stitch-indicator" style="display: none;">+1</div>
+            </div>
+
+            <div class="counter-section stitch-section">
+                <div class="counter-label">
+                    <div class="label-en">Stitch</div>
+                    <div class="label-ja">目数</div>
+                </div>
+                <div class="counter-value-wrapper">
+                    <div class="counter-value-container">
+                        <input type="number" id="stitch_count" value="1" min="0" class="counter-value">
+                    </div>
+                    <div class="counter-unit">目</div>
                 </div>
             </div>
 
-            <div class="counter-group">
-                <div class="counter-label">目数 (Stitch)</div>
-                <div class="counter-display">
-                    <input type="number" id="stitch_count" value="0" min="0">
+            <div class="settings-section">
+                <div class="settings-title">目数設定</div>
+                <div class="settings-row">
+                    <div class="settings-value-container">
+                        <input type="number" id="setting_stitch_count" value="0" class="settings-value">
+                    </div>
+                    <span class="settings-text">目 /</span>
+                    <div class="settings-value-container">
+                        <input type="number" id="setting_stitch" value="1" min="1" class="settings-value">
+                    </div>
+                    <span class="settings-text">段ごと</span>
                 </div>
             </div>
-        </div>
 
-        <div class="settings-section">
-            <div class="settings-title">目数設定</div>
-            <div class="settings-row">
-                <input type="number" id="setting_stitch_count" value="0">
-                <span class="settings-text">目 /</span>
-                <input type="number" id="setting_stitch" value="1" min="1">
-                <span class="settings-text">段ごと</span>
+            <button id="done_button" class="done-button">DONE</button>
+
+            <div class="memo-section">
+                <div class="memo-container">
+                    <textarea id="memo_field" class="memo-textarea" placeholder="メモ"></textarea>
+                </div>
             </div>
+
+            <button id="reset_button" class="reset-button">Reset</button>
         </div>
-
-        <button id="done_button" class="done-button">DONE</button>
-
-        <div class="memo-section">
-            <textarea id="memo_field" class="memo-textarea" rows="3" placeholder="メモ..."></textarea>
-        </div>
-
-        <button id="reset_button" class="reset-button">リセット</button>
     </div>
 
     <script src="app.js"></script>
