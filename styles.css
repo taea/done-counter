@@ -68,9 +68,9 @@ body {
 .counter-section {
     background: linear-gradient(
         135deg,
-        rgba(255, 255, 255, 0.35) 0%,
-        rgba(255, 255, 255, 0.2) 50%,
-        rgba(255, 255, 255, 0.15) 100%
+        rgba(107, 68, 35, 0.15) 0%,
+        rgba(107, 68, 35, 0.1) 50%,
+        rgba(107, 68, 35, 0.08) 100%
     );
     border-radius: 10px;
     padding: 40px 30px;
