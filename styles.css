@@ -175,22 +175,29 @@ body {
 }
 
 .counter-section.increase {
-    background: rgba(46, 125, 50, 0.8);
+    background: linear-gradient(
+        135deg,
+        rgba(46, 125, 50, 0.5) 0%,
+        rgba(46, 125, 50, 0.35) 50%,
+        rgba(46, 125, 50, 0.25) 100%
+    );
 }
 
 .counter-section.decrease {
-    background: rgba(198, 40, 40, 0.8);
+    background: linear-gradient(
+        135deg,
+        rgba(198, 40, 40, 0.5) 0%,
+        rgba(198, 40, 40, 0.35) 50%,
+        rgba(198, 40, 40, 0.25) 100%
+    );
 }
 
-.counter-section.increase .label-en,
-.counter-section.increase .label-ja,
-.counter-section.increase .counter-unit,
-.counter-section.increase .stitch-indicator,
-.counter-section.decrease .label-en,
-.counter-section.decrease .label-ja,
-.counter-section.decrease .counter-unit,
+.counter-section.increase .stitch-indicator {
+    color: rgb(46, 125, 50);
+}
+
 .counter-section.decrease .stitch-indicator {
-    color: white;
+    color: rgb(198, 40, 40);
 }
 
 .settings-section {
