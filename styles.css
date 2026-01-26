@@ -176,7 +176,7 @@ body {
 
 .counter-section.increase {
     background: linear-gradient(
-        135deg,
+        180deg,
         rgba(46, 125, 50, 0.5) 0%,
         rgba(46, 125, 50, 0.35) 50%,
         rgba(46, 125, 50, 0.25) 100%
@@ -185,7 +185,7 @@ body {
 
 .counter-section.decrease {
     background: linear-gradient(
-        135deg,
+        180deg,
         rgba(198, 40, 40, 0.5) 0%,
         rgba(198, 40, 40, 0.35) 50%,
         rgba(198, 40, 40, 0.25) 100%
