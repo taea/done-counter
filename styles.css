@@ -79,15 +79,14 @@ body {
         -1px 0 0 rgba(255, 255, 255, 0.8),
         0 -1px 0 rgba(255, 255, 255, 0.8),
         4px 4px 4px 0px rgba(0, 0, 0, 0.1);
-    display: flex;
+    display: grid;
+    grid-template-columns: 80px 1fr 80px;
     align-items: center;
-    gap: 35px;
     position: relative;
 }
 
 .counter-label {
     width: 80px;
-    flex-shrink: 0;
 }
 
 .label-en {
@@ -108,6 +107,7 @@ body {
 .counter-value-wrapper {
     display: flex;
     align-items: center;
+    justify-self: center;
     gap: 5px;
 }
 
