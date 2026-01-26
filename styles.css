@@ -158,8 +158,16 @@ body {
     font-size: 20px;
     font-weight: 800;
     color: #6B4423;
+    letter-spacing: 1px;
     position: absolute;
     right: 30px;
+}
+
+.indicator-unit {
+    font-weight: 400;
+    font-size: 14px;
+    position: relative;
+    top: 1px;
 }
 
 .counter-section.increase {

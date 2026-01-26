@@ -19,13 +19,13 @@ function updateStitchIndicator() {
         if (stitchChange > 0) {
             rowGroup.classList.remove('decrease');
             rowGroup.classList.add('increase');
-            stitchChangeIndicator.textContent = `+${stitchChange}目`;
+            stitchChangeIndicator.innerHTML = `+${stitchChange}<span class="indicator-unit">目</span>`;
             stitchChangeIndicator.className = 'stitch-indicator';
             stitchChangeIndicator.style.display = 'flex';
         } else if (stitchChange < 0) {
             rowGroup.classList.remove('increase');
             rowGroup.classList.add('decrease');
-            stitchChangeIndicator.textContent = `${stitchChange}目`;
+            stitchChangeIndicator.innerHTML = `${stitchChange}<span class="indicator-unit">目</span>`;
             stitchChangeIndicator.className = 'stitch-indicator';
             stitchChangeIndicator.style.display = 'flex';
         } else {
