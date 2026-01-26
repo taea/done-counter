@@ -72,6 +72,8 @@ body {
         rgba(107, 68, 35, 0.1) 50%,
         rgba(107, 68, 35, 0.08) 100%
     );
+    backdrop-filter: blur(0.5px);
+    -webkit-backdrop-filter: blur(0.5px);
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 10px;
     padding: 40px 30px;
@@ -193,6 +195,8 @@ body {
 
 .settings-section {
     background: rgba(107, 68, 35, 0.2);
+    backdrop-filter: blur(0.5px);
+    -webkit-backdrop-filter: blur(0.5px);
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 10px;
     padding: 16px 30px;
@@ -285,6 +289,8 @@ body {
 
 .memo-section {
     background: rgba(107, 68, 35, 0.2);
+    backdrop-filter: blur(0.5px);
+    -webkit-backdrop-filter: blur(0.5px);
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 10px;
     padding: 16px;
